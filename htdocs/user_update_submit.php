@@ -1,4 +1,13 @@
 <?php
+require_once('model.php');
+require_once('functions.php');
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $name = filter_input(INPUT_POST, 'name');
+    $id = filter_input(INPUT_POST, 'id');
+    update($pdo, $name, $id);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

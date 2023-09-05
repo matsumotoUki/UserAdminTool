@@ -1,4 +1,13 @@
 <?php
+
+require_once('model.php');
+require_once('functions.php');
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $id = filter_input(INPUT_POST, 'id');
+    delete($pdo, $id);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

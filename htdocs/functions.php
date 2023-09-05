@@ -1,10 +1,11 @@
 <?php
+require_once('UUID.php');
+use htdocs\UUID;
 
 function h($str){
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-//TODO テーブル名定数にする
 function getAll($pdo){
     $stmt = $pdo->query('SELECT * FROM users');
     $results = $stmt->fetchAll();
@@ -17,14 +18,25 @@ function getOne($pdo, $id){
     $stmt->execute();
     $result = $stmt->fetch();
     return $result;
-    // foreach ($stmt as $row) {
-    //     var_dump($row);
-    // }
+}
+    
+function add($pdo, $name){
+    $uuid = UUID::generate();
+    $stmt = $pdo->prepare("INSERT INTO users (id, name, created, updated) values(:id, :name,now(),now())");
+    $stmt->bindValue('id', $uuid, PDO::PARAM_STR);
+    $stmt->bindValue('name', $name, PDO::PARAM_STR);
+    $stmt->execute();
 }
 
-function addNew($pdo){
-    $new = filter_input(INPUT_POST, 'new');
-    $stmt = $pdo->prepare("INSERT INTO users (nam, created, updated) values(:new,now(),now())");
-    $stmt->bindValue('new', $new, PDO::PARAM_STR);
+function update($pdo, $name, $id){
+    $stmt = $pdo->prepare("UPDATE users SET name= :name, updated = now() where id = :id");
+    $stmt->bindValue('name', $name, PDO::PARAM_STR);
+    $stmt->bindValue('id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
+function delete($pdo, $id){
+    $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
+    $stmt->bindValue('id', $id, PDO::PARAM_INT);
     $stmt->execute();
 }

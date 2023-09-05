@@ -3,14 +3,9 @@ require_once('model.php');
 require_once('functions.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    // addNew($pdo);
-    $new = filter_input(INPUT_POST, 'new');
-    $stmt = $pdo->prepare("INSERT INTO user (nam, created, updated) values(:new,now(),now())");
-    $stmt->bindValue('new', $new, PDO::PARAM_STR);
-    $stmt->execute();
+    $name = filter_input(INPUT_POST, 'name');
+    add($pdo, $name);
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +17,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
     <h2>会員登録</h2>
     <p class="card-text">会員登録が完了しました。</p>
-    <a href="index.php">一覧にもどる</a>
+    <a href="index.php">一覧にもどって確認する</a>
 </body>
 </html>

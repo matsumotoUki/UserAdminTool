@@ -15,7 +15,7 @@ require_once('functions.php');
     <h2>会員登録</h2>
     <p>以下の項目を入力して「確認する」ボタンを押下してください。</p>
     <form action="user_create_confirm.php" method="POST">
-        <input type="text" name="new"/>
+        <input type="text" name="name"/>
         <button type="submit">確認する</button>
     </form>
     <a href="index.php">もどる</a>

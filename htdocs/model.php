@@ -18,7 +18,7 @@ try {
 
 
 } catch (PDOException $e) {
-    print "しっぱいしっぱい:{$e->getMessage()}";
+    print "PDOしっぱい:{$e->getMessage()}";
     exit;
 }
 
