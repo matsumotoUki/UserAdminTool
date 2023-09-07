@@ -1,6 +1,6 @@
 <?php
-require_once('model.php');
-require_once('functions.php');
+require_once('../src/model.php');
+require_once('../src/functions.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $name = filter_input(INPUT_POST, 'name');
@@ -22,6 +22,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <input type="hidden" name="name" value="<?=h($name)?>">
         <button>登録する</button>
     </form>
-    <a href="index.php">一覧にもどる</a>
+    <form action="user_create_input.php" method="POST">
+        <input type="hidden" name="name" value="<?=h($name)?>">
+        <button>入力画面に戻る</button>
+    </form>
+    <a href="user_list.php">一覧にもどる</a>
 </body>
 </html>

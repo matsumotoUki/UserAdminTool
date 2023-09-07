@@ -1,6 +1,7 @@
 <?php
-require_once('model.php');
-require_once('functions.php');
+
+require_once('../src/model.php');
+require_once('../src/functions.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $name = filter_input(INPUT_POST, 'name');
@@ -19,6 +20,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
     <h2>会員情報変更</h2>
     <p>会員情報の変更が完了しました。</p>
-    <a href="index.php">一覧にもどる</a>
+    <a href="user_list.php">一覧にもどる</a>
 </body>
 </html>

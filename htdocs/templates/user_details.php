@@ -1,7 +1,7 @@
 <?php
 
-require_once('model.php');
-require_once('functions.php');
+require_once('../src/model.php');
+require_once('../src/functions.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $id = filter_input(INPUT_POST, 'id');
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <h2>詳細画面</h2>
     <table>
         <tr>
-            <th>会員ID</th>
+            <th>会員ID一旦表示中</th>
             <td>
                 <?=h($result->id); ?>
             </td>
@@ -52,6 +52,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input type="hidden" name="id" value="<?=$result->id?>" size="20"/>
             <button type="submit">削除する</button>
         </form>
-        <a href="index.php">もどる</a>
+        <a href="user_list.php">もどる</a>
 </body>
 </html>

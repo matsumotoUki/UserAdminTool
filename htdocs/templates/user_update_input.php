@@ -1,7 +1,7 @@
 <?php
 
-require_once('model.php');
-require_once('functions.php');
+require_once('../src/model.php');
+require_once('../src/functions.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $id = filter_input(INPUT_POST, 'id');

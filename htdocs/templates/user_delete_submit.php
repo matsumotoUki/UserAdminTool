@@ -1,7 +1,7 @@
 <?php
 
-require_once('model.php');
-require_once('functions.php');
+require_once('../src/model.php');
+require_once('../src/functions.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $id = filter_input(INPUT_POST, 'id');
@@ -19,6 +19,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
     <h2>会員情報削除</h2>
     <p>会員情報の削除が完了しました。</p>
-    <a href="index.php">一覧にもどる</a>
+    <a href="user_list.php">一覧にもどる</a>
 </body>
 </html>
