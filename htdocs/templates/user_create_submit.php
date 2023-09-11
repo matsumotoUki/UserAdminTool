@@ -5,7 +5,9 @@ require_once('../src/functions.php');
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $name = filter_input(INPUT_POST, 'name');
     add($pdo, $name);
+    header('Location: http://'.$_SERVER["HTTP_HOST"].'/templates/user_create_submit.php', true, 301);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
