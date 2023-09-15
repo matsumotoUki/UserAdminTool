@@ -1,11 +1,3 @@
-<?php
-require_once('../src/model.php');
-require_once('../src/functions.php');
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $name = filter_input(INPUT_POST, 'name');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +8,38 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
     <h2>会員登録</h2>
     <p>以下の内容を確認して「登録する」ボタンを押下してください。</p>
-
-    <p>お名前：<?= h($name); ?>様</p>
+    <table>
+        <tr>
+            <th>お名前</th>
+            <td>
+                <span><?= $name; ?>様</span>
+            </td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <th>ユーザ種別</th>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <th>グループ</th>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <th>通知</th>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
     <form action="user_create_submit.php" method="POST">
         <input type="hidden" name="name" value="<?=h($name)?>">
         <button>登録する</button>
@@ -26,6 +48,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <input type="hidden" name="name" value="<?=h($name)?>">
         <button>入力画面に戻る</button>
     </form>
-    <a href="user_list.php">一覧にもどる</a>
+    <a href="user_list.php">一覧画面に戻る</a>
 </body>
 </html>

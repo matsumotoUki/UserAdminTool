@@ -1,15 +1,3 @@
-<?php
-
-require_once('../src/model.php');
-require_once('../src/functions.php');
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $name = filter_input(INPUT_POST, 'name');
-    $id = filter_input(INPUT_POST, 'id');
-    $result = getOne($pdo, $id);
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,17 +22,39 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </td>
         </tr>
         <tr>
+            <th>メールアドレス</th>
+            <td>
+                <span><?=h($result->name); ?></span>
+            </td>
+        </tr>
+        <tr>
+            <th>ユーザ種別</th>
+            <td>
+                <span><?=h($result->name); ?></span>
+            </td>
+        </tr>
+        <tr>
+            <th>グループ</th>
+            <td>
+                <span><?=h($result->name); ?></span>
+            </td>
+        </tr>
+        <tr>
+            <th>通知</th>
+            <td>
+                <span><?=h($result->name); ?></span>
+            </td>
+        </tr>
+        <tr>
             <th>登録日</th>
             <td>
-                <span><?=date('m月d日 H:i', strtotime(h(date($result->created)))); ?></span>
-                <input type="hidden" value="<?= $result->created ?>" size="20" />
+                <span><?=date('m月d日 H:i', strtotime($result->created)); ?></span>
             </td>
         </tr>
         <tr>
             <th>更新日</th>
             <td>
-                <span><?=date('m月d日 H:i', strtotime(h(date($result->updated)))); ?></span>
-                <input type="hidden" value="<?= $result->updated ?>" size="20" />
+                <span><?=date('m月d日 H:i', strtotime($result->updated)); ?></span>
             </td>
         </tr>
     </table>
@@ -56,7 +66,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <form action="user_update_input.php" method="POST">
         <input type="hidden" name="name" value="<?= $name ?>"/>
         <input type="hidden" name="id" value="<?= $result->id ?>"/>
-        <button type="submit">変更入力画面にもどる</button>
+        <button type="submit">変更入力画面に戻る</button>
+        <a href="user_list.php">一覧画面に戻る</a>
     </form>
 </body>
 </html>
