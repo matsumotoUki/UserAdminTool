@@ -6,7 +6,6 @@ const REFERER = 'http://localhost:8098/user_create_confirm.php';//TODO:modify pa
 
 //入力画面からの遷移でなければエラー画面表示
 if(REFERER!==$_SERVER['HTTP_REFERER']){
-    // print_r($_SERVER['HTTP_REFERER']);
     echo '<P>このページへ直接アクセスすることは禁止されています。</P>
           <p>新規登録画面よりご登録ください。</p>
           <p><a href="user_create_input.php">新規登録画面に移る</a></p>

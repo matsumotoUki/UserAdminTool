@@ -15,7 +15,7 @@
             <tr>
                 <th>お名前</th>
                 <td>
-                    <input type="text" name="name" value="<?= empty($name)? '': $name ?>"/>   
+                    <input type="text" name="name" value="<?= empty(h($name))? '': h($name) ?>"/>   
                 </td>
             </tr>
             <tr>

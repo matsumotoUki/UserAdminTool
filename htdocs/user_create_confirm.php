@@ -16,13 +16,11 @@ if(!isset($_POST['name'])){
               <p><a href="user_list.php">一覧画面に戻る</a></p>';
         exit;
     }else{
-        
-        $name = $_POST['name'];
+        $name = h($_POST['name']);//user_create_input.htmlでh()しても効果無し9月19日
         $email = $_POST['email'];
         $userType = $_POST['userType']??'0';//NULLなら一旦「0」を代入
         $zodiac = $_POST['zodiac']??'0';//NULLなら一旦「0」を代入（上手くいっていない）
         $notice = $_POST['notice']??'0';//NULLなら一旦「0」を代入
-
     }
 }
 

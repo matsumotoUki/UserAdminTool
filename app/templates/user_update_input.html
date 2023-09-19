@@ -9,7 +9,7 @@
 </head>
 <body>
     <h2>会員情報変更</h2>
-    <p>以下の項目を入力して「確認する」ボタンを押下してください。TODO：result->userTypeなどの値から、selectedやcheckedが付くプログラム</p>
+    <p>以下の項目を入力して「確認する」ボタンを押下してください。</p>
     <form action="user_update_confirm.php" method="POST">
         <input type="hidden" name="id" value="<?=$result->id?>"/>
         <table>
@@ -34,9 +34,9 @@
             <tr>
                 <th>ユーザ種別</th>
                 <td>
-                    <input type="radio" name="userType" id="admin" value="1" <?php if($userType=='1'):?>checked<?php endif; ?>> 
+                    <input type="radio" name="userType" id="admin" value="1" <?php if($result->userType=='1'):?>checked<?php endif; ?>> 
                     <label for="admin">管理者</label>
-                    <input type="radio" name="userType" id="user" value="2" <?php if($userType=='2'):?>checked<?php endif; ?>> 
+                    <input type="radio" name="userType" id="user" value="2" <?php if($result->userType=='2'):?>checked<?php endif; ?>> 
                     <label for="user">一般ユーザ</label>
                 </td>
             </tr>
@@ -54,7 +54,7 @@
             <tr>
                 <th>通知</th>
                 <td>
-                    <input type="checkbox"  name="notice" id="notice" value="1" <?php if($notice=='1'):?>checked<?php endif; ?>>
+                    <input type="checkbox"  name="notice" id="notice" value="1" <?php if($result->notice=='1'):?>checked<?php endif; ?>>
                     <label for="notice">通知を希望する</label>
                 </td>
             </tr>
