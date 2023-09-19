@@ -10,7 +10,7 @@
     <p>以下の内容を確認して「削除する」ボタンを押下してください。※削除したデータは元に戻すことが出来ませんのでご注意ください。</p>
     <table>
         <tr>
-            <th>会員ID</th>
+            <th>会員ID(一旦表示中)</th>
             <td>
                 <?=h($result->id); ?>
             </td>
@@ -24,25 +24,25 @@
         <tr>
             <th>メールアドレス</th>
             <td>
-                
+                <span><?=h($result->email); ?></span>
             </td>
         </tr>
         <tr>
             <th>ユーザ種別</th>
             <td>
-                
+                <span><?= $userType==1 ? '管理者':'一般ユーザ' ?></span>
             </td>
         </tr>
         <tr>
-            <th>グループ</th>
+            <th>干支グループ</th>
             <td>
-                
+                <span><?=h(zodiacValue($result->zodiac)); ?></span>
             </td>
         </tr>
         <tr>
             <th>通知</th>
             <td>
-                
+                <span><?= h($result->notice)=='0'? '通知しない':'希望する' ?></span>
             </td>
         </tr>
         <tr>

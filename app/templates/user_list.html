@@ -27,7 +27,7 @@
             <th>お名前</th>
             <th>メールアドレス</th>
             <th>ユーザ種別</th>
-            <th>グループ</th>
+            <th>干支グループ</th>
             <th>通知</th>
             <th>登録日</th>
             <th>更新日</th>
@@ -39,16 +39,16 @@
                 <span><?=h($result->name); ?></span>
             </td>
             <td>
-                <span>ー</span>
+                <span><?=h($result->email); ?></span>
             </td>
             <td>
-                <span>ー</span>
+                <span><?=h($result->userType)=='1' ? '管理者':'一般ユーザ' ?></span>
             </td>
             <td>
-                <span>ー</span>
+                <span><?=empty(h(zodiacValue($result->zodiac)))?'----': h(zodiacValue($result->zodiac))?></span>
             </td>
             <td>
-                <span>ー</span>
+                <span><?= h($result->notice)=='0'? '通知しない':'希望する' ?></span>
             </td>
             <td>
             <span><?=date('m月d日 H:i', strtotime($result->created)); ?></span>

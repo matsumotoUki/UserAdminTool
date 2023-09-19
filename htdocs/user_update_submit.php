@@ -12,9 +12,15 @@ if(REFERER!==$_SERVER['HTTP_REFERER']){
     exit;
 }else{
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $name = $_POST['name'];
+
         $id = $_POST['id'];
-        update($pdo, $name, $id);
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $userType = $_POST['userType'];
+        $zodiac = $_POST['zodiac'];
+        $notice = $_POST['notice'];
+        
+        update($pdo, $id, $name, $email, $userType, $zodiac, $notice);
         header('Location: http://'.$_SERVER["HTTP_HOST"].'/user_update_submit.php', true, 302);
     }
 }

@@ -23,25 +23,25 @@
         <tr>
             <th>メールアドレス</th>
             <td>
-                <span><?=h($result->name); ?></span>
+                <span><?=h($result->email); ?></span>
             </td>
         </tr>
         <tr>
             <th>ユーザ種別</th>
             <td>
-                <span><?=h($result->name); ?></span>
+                <span><?=h($result->userType)=='1' ? '管理者':'一般ユーザ' ?></span>
             </td>
         </tr>
         <tr>
-            <th>グループ</th>
+            <th>干支グループ</th>
             <td>
-                <span><?=h($result->name); ?></span>
+                <span><?=h(zodiacValue($result->zodiac)); ?></span>
             </td>
         </tr>
         <tr>
             <th>通知</th>
             <td>
-                <span><?=h($result->name); ?></span>
+                <span><?= h($result->notice)=='0'? '通知しない':'希望する' ?></span>
             </td>
         </tr>
         <tr>
@@ -58,11 +58,11 @@
         </tr>
     </table>
     <form action="user_update_input.php" method="POST">
-        <input type="hidden" name="id" value="<?=$result->id?>" size="20"/>
+        <input type="hidden" name="id" value="<?=$result->id?>"/>
         <button type="submit">変更する</button>
     </form>
     <form action="user_delete_confirm.php" method="POST">
-        <input type="hidden" name="id" value="<?=$result->id?>" size="20"/>
+        <input type="hidden" name="id" value="<?=$result->id?>"/>
         <button type="submit">削除する</button>
     </form>
     <a href="user_list.php">一覧画面に戻る</a>

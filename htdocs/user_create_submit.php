@@ -14,8 +14,15 @@ if(REFERER!==$_SERVER['HTTP_REFERER']){
     exit;
 }else{
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        //TODO：多分、配列か連想配列でupdateに渡すと予想
         $name = $_POST['name'];
-        add($pdo, $name);
+        $email = $_POST['email'];
+        $userType = $_POST['userType'];
+        $zodiac = $_POST['zodiac'];
+        $notice = $_POST['notice'];
+
+        add($pdo, $name, $email, $userType, $zodiac, $notice);
         header('Location: http://'.$_SERVER["HTTP_HOST"].'/user_create_submit.php', true, 302);
         exit;
     }

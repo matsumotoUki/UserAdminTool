@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Constants;
+namespace Constants;
 
 /**
  * 定数

@@ -13,50 +13,41 @@
     <form action="user_create_confirm.php" method="POST">
         <table>
             <tr>
-                <th>お名前（必須）</th>
+                <th>お名前</th>
                 <td>
-                    <input type="text" name="name" value="<?= empty($name)? '': $name ?>"/>
+                    <input type="text" name="name" value="<?= empty($name)? '': $name ?>"/>   
                 </td>
             </tr>
             <tr>
                 <th>メールアドレス</th>
                 <td>
-                    <input type="text" name="name" value="<?= empty($name)? '': $name ?>"/>
+                    <input type="text" name="email" value="<?= empty($email)? '': $email ?>"/> 
                 </td>
             </tr>
             <tr>
-                <th>ユーザ種別（必須）</th>
+                <th>ユーザ種別</th>
                 <td>
-                    <input type="radio" name="userType" id="admin" value="admin"> 
+                    <input type="radio" name="userType" id="admin" value="1" <?php if($userType=='1'):?>checked<?php endif; ?>> 
                     <label for="admin">管理者</label>
-                    <input type="radio" name="userType" id="user" value="user"> 
+                    <input type="radio" name="userType" id="user" value="2" <?php if($userType=='2'):?>checked<?php endif; ?>> 
                     <label for="user">一般ユーザ</label>
                 </td>
             </tr>
             <tr>
-                <th>干支グループ（group予約語だった）</th>
+                <th>干支グループ</th>
                 <td>
-                    <select>
+                    <select name="zodiac">
                         <option></option>
-                        <option value="eMouse">子（ね）</option>
-                        <option value="eCow">丑（うし）</option>
-                        <option value="eTiger">寅（とら）</option>
-                        <option value="eRabbit">卯（う）</option>
-                        <option value="eDragon">辰（たつ）</option>
-                        <option value="eSnake">巳（み）</option>
-                        <option value="eHorse">午（うま）</option>
-                        <option value="eSheep">未（ひつじ）</option>
-                        <option value="eMonkey">申（さる）</option>
-                        <option value="eBird">酉（とり）</option>
-                        <option value="eDog">戌（いぬ）</option>
-                        <option value="ePig">亥（い）</option>
+                        <?php foreach ($data as $key => $value) :?>
+                        <option value="<?= $key ?>" <?php if($key==$zodiac):?>selected<?php endif; ?>><?= $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
             </tr>
             <tr>
                 <th>通知</th>
                 <td>
-                    <input type="checkbox"  name="notice" id="notice" value="1" >
+                    <input type="checkbox"  name="notice" id="notice" value="1" <?php if($notice=='1'):?>checked<?php endif; ?>>
                     <label for="notice">通知を希望する</label>
                 </td>
             </tr>

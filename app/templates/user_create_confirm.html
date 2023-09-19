@@ -12,40 +12,48 @@
         <tr>
             <th>お名前</th>
             <td>
-                <span><?= $name; ?>様</span>
+                <span><?= $name ?>様</span>
             </td>
         </tr>
         <tr>
             <th>メールアドレス</th>
             <td>
-                
+                <span><?=h($email) ?></span>
             </td>
         </tr>
         <tr>
             <th>ユーザ種別</th>
             <td>
-                
+                <span><?= h($userType)==1 ? '管理者':'一般ユーザ' ?></span>
             </td>
         </tr>
         <tr>
-            <th>グループ</th>
+            <th>干支グループ</th>
             <td>
-                
+                <span><?=h(zodiacValue($zodiac)) ?></span>
             </td>
         </tr>
         <tr>
             <th>通知</th>
             <td>
-                
+                <span><?= h($notice)=='0'? '通知しない':'希望する' ?></span>
             </td>
         </tr>
     </table>
     <form action="user_create_submit.php" method="POST">
-        <input type="hidden" name="name" value="<?=h($name)?>">
+        <input type="hidden" name="name" value="<?= $name ?>"/>
+        <input type="hidden" name="email" value="<?= $email ?>"/>
+        <input type="hidden" name="userType" value="<?= $userType ?>"/>
+        <input type="hidden" name="zodiac" value="<?= $zodiac ?>"/>
+        <input type="hidden" name="notice" value="<?= $notice ?>"/>
         <button>登録する</button>
     </form>
     <form action="user_create_input.php" method="POST">
         <input type="hidden" name="name" value="<?=h($name)?>">
+        <input type="hidden" name="email" value="<?= $email ?>"/>
+        <input type="hidden" name="userType" value="<?= $userType ?>"/>
+        <input type="hidden" name="zodiac" value="<?= $zodiac ?>"/>
+        <input type="hidden" name="notice" value="<?= $notice ?>"/>
         <button>入力画面に戻る</button>
     </form>
     <a href="user_list.php">一覧画面に戻る</a>

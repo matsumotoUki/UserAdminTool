@@ -9,9 +9,14 @@ if(!isset($_POST['name'])&&!isset($_POST['id'])){
     exit;
 }else{
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $name = $_POST['name'];
-        // $name = h($_POST['name']);
+        
         $id = $_POST['id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $userType = $_POST['userType']??'0';//NULLなら一旦「0」を代入
+        $zodiac = $_POST['zodiac']??'0';//NULLなら一旦「0」を代入（上手くいっていない）
+        $notice = $_POST['notice']??'0';//NULLなら一旦「0」を代入
+
         $result = getOne($pdo, $id);
     }
 }
