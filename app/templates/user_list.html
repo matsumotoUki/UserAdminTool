@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員情報一覧</title>
+</head>
+
+<body>
+    <h2>会員一覧</h2>
+    
+    <a href="user_create_input.php">新規に会員登録</a>
+    <table border="1">
+    <colgroup>
+            <col width="200">
+            <col width="200">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="150">
+            <col width="150">
+            <col width="50">
+          </colgroup>
+        <tr>
+            <th>お名前</th>
+            <th>メールアドレス</th>
+            <th>ユーザ種別</th>
+            <th>干支グループ</th>
+            <th>通知</th>
+            <th>登録日</th>
+            <th>更新日</th>
+            <th></th>
+        </tr>
+<?php foreach ($results as $result) :?>
+        <tr>
+            <td>
+                <span><?=h($result->name); ?></span>
+            </td>
+            <td>
+                <span><?=h($result->email); ?></span>
+            </td>
+            <td>
+                <span><?=h($result->userType)=='1' ? '管理者':'一般ユーザ' ?></span>
+            </td>
+            <td>
+                <span><?=empty(h(zodiacValue($result->zodiac)))?'----': h(zodiacValue($result->zodiac))?></span>
+            </td>
+            <td>
+                <span><?= h($result->notice)=='0'? '通知しない':'希望する' ?></span>
+            </td>
+            <td>
+            <span><?=date('m月d日 H:i', strtotime($result->created)); ?></span>
+            </td>
+            <td>
+            <span><?=date('m月d日 H:i', strtotime($result->updated)); ?></span>
+            </td>
+            <td>
+            <a href="user_details.php?id=<?=$result->id?>">詳細</a>
+            </td>
+        </tr>
+<?php endforeach; ?>
+    </table>
+</body>
+
+</html>

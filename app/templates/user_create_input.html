@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規会員登録</title>
+    <!-- <link rel="stylesheet" href="../app/assets/index.css"> -->
+    <style>body{user-select: none;}</style>
+</head>
+<body>
+    <h2>会員登録</h2>
+    <p>以下の項目を入力して「確認する」ボタンを押下してください。</p>
+    <form action="user_create_confirm.php" method="POST">
+        <table>
+            <tr>
+                <th>お名前</th>
+                <td>
+                    <input type="text" name="name" value="<?= empty(h($name))? '': h($name) ?>"/>   
+                </td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td>
+                    <input type="text" name="email" value="<?= empty($email)? '': $email ?>"/> 
+                </td>
+            </tr>
+            <tr>
+                <th>ユーザ種別</th>
+                <td>
+                    <input type="radio" name="userType" id="admin" value="1" <?php if($userType=='1'):?>checked<?php endif; ?>> 
+                    <label for="admin">管理者</label>
+                    <input type="radio" name="userType" id="user" value="2" <?php if($userType=='2'):?>checked<?php endif; ?>> 
+                    <label for="user">一般ユーザ</label>
+                </td>
+            </tr>
+            <tr>
+                <th>干支グループ</th>
+                <td>
+                    <select name="zodiac">
+                        <option></option>
+                        <?php foreach ($data as $key => $value) :?>
+                        <option value="<?= $key ?>" <?php if($key==$zodiac):?>selected<?php endif; ?>><?= $value ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>通知</th>
+                <td>
+                    <input type="checkbox"  name="notice" id="notice" value="1" <?php if($notice=='1'):?>checked<?php endif; ?>>
+                    <label for="notice">通知を希望する</label>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">確認する</button>
+    </form>
+    <a href="user_list.php">一覧画面に戻る</a>
+</body>
+</html>
